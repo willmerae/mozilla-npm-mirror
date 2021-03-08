@@ -6,6 +6,7 @@ var Download = require('../lib/download'),
     check = require('validator').check,
     debug = require('debug')('npm-mirror'),
     fs = require('graceful-fs'),
+    globalTunnel = require('global-tunnel-ng'),
     path = require('path'),
     program = require('commander'),
     temp = require('temp'),
@@ -142,6 +143,10 @@ if (require.main === module) {
         program.root)) {
     program.help();
   }
+
+  // Use http(s) proxy, if http(s)_proxy environment variable specifies it
+  globalTunnel.initialize();
+  debug('proxyConfig %s', JSON.stringify(globalTunnel.proxyConfig));
 
   temp.track();
   downloadManifests(program.manifests, function(err, manifests) {
