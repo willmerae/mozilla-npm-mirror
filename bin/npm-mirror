@@ -1,4 +1,6 @@
 #!/usr/bin/env node
+'use strict';
+
 var Download = require('../lib/download'),
     Package = require('../lib/package'),
     SyncManager = require('../lib/syncmanager'),
