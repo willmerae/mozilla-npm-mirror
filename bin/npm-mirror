@@ -144,9 +144,16 @@ if (require.main === module) {
     program.help();
   }
 
-  // Use http(s) proxy, if http(s)_proxy environment variable specifies it
+  /*
+   * Use http(s) proxy, if http(s)_proxy environment variable specifies it.
+   * TODO use e.g. https://github.com/gajus/global-agent for Node.js >= 10.
+   *
+   * > global-tunnel (including global-tunnel-ng and tunnel) are designed to
+   * > support legacy Node.js versions. They use various workarounds and rely
+   * > on monkey-patching http.request, http.get, https.request and https.get methods.
+   * > -- https://github.com/gajus/global-agent#what-is-the-difference-from-global-tunnel-and-tunnel
+   */
   globalTunnel.initialize();
-  debug('proxyConfig %s', JSON.stringify(globalTunnel.proxyConfig));
 
   temp.track();
   downloadManifests(program.manifests, function(err, manifests) {
