@@ -20,24 +20,20 @@
     "temp": "~0.6.0",
     "validator": "~1.5.1"
   },
-
   "devDependencies": {
     "jshint": "~2.1.11",
     "mocha": "~1.13.0",
     "proxyquire": "~0.5.1",
     "sinon": "~1.7.3"
   },
-
   "keywords": [
     "mirror",
     "npm",
     "registry"
   ],
-
   "bin": {
     "npm-mirror": "bin/npm-mirror"
   },
-
   "scripts": {
     "test": "make test"
   }
